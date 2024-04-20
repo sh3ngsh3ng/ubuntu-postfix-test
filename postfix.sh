@@ -11,6 +11,9 @@ sudo ufw enable
 sudo ufw allow 25
 sudo ufw delete allow 25
 
+# Copy
+cp /etc/postfix/main.cf /etc/postfix/mainorig.cf
+
 # Configuring Postfix
 sudo nano /etc/postfix/main.cf
 # things to change in config file
@@ -38,6 +41,8 @@ sudo systemctl restart postfix
 
 
 # Test Email sending
+telnet localhost 25
+
 ehlo localhost
 mail from: root@localhost
 rcpt to: user_email_id
